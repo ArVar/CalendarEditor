@@ -1,0 +1,45 @@
+<?php if ($this->headline): ?>
+<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+
+<h2> <?php echo $GLOBALS['TL_LANG']['MSC']['caledit_currentActionHint']; ?></h2>
+<?php if ($this->CurrentEventLink): ?>
+<?php if ($this->CurrentPublished): ?>
+<p class="caledit_info">
+<a href="<?php echo $this->CurrentEventLink; ?>" title="<?php echo $this->CurrentTitle; ?>"> <?php echo $this->CurrentTitle; ?> </a>
+<?php else:; ?>
+<span class="date"> <?php echo $this->CurrentDate; ?>: </span><span class="title"><?php echo $this->CurrentTitle; ?></span>
+<?php endif; ?>
+<?php endif; ?>
+<span="caledit_publishinfo"> (<?php echo $this->CurrentPublishedInfo; ?>) </span>
+</p>
+
+<?php if (!$this->fields): ?>
+<p class="error"><?php echo $this->FatalError; ?></p>
+<?php else: ?>
+<div class="event<?php echo $this->classList; ?>">
+<h2>  <?php echo $GLOBALS['TL_LANG']['MSC']['caledit_eventData']; ?></h2>
+<div class="form">
+        <form action="<?php echo $this->action; ?>" method="post">
+        <input type="hidden" name="FORM_SUBMIT" value="caledit_submit" /><?php echo $this->messages; ?>
+		<input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+		<table cellpadding="2" cellspacing="2" border="0" >
+		<tbody>
+			<?php foreach ($this->fields as $objWidget): ?>
+			
+			<tr class="<?php echo $class; ?>">
+				<td class="label"><?php echo $objWidget->generateLabel(); ?></td>
+				<td class="value"><?php echo $objWidget->generateWithError(); ?></td>
+			</tr>
+			<?php endforeach; ?>
+			
+			<tr class="<?php echo $class; ?>">
+				<td class="label">&nbsp;</td>
+				<td class="value"><input type="submit" class="submit" value="<?php echo $this->submit; ?>" /></td>
+			</tr>
+		</tbody>
+		</table>       
+        </form>
+</div>
+</div>
+<?php endif; ?>
