@@ -291,21 +291,21 @@ class ModuleEventEditor extends Events {
         $newDate = $this->Input->get('add');
 		$editID = '';
         $editID = $this->Input->get('edit');
-        // check later for emty($newDate) // empty($editID)
+        // check later for empty($newDate) // empty($editID)
         $this->import('FrontendUser', 'User');
 
         if (!FE_USER_LOGGED_IN) {
-            $fatalError = 'Not a registered user.';
+            $fatalError = 'Not a registered user.'; //TODO: lang
         } else {
             $AllowedCalendars = $this->getCalendars($this->User);			
             if (count($AllowedCalendars) == 0) {
-                $fatalError = 'Unauthorized user: You are not allowed to edit events in any calender.';
+                $fatalError = 'Unauthorized user: You are not allowed to edit events in any calender.'; //TODO: lang
             } else {
 				$currentEventObject = $this->Database->prepare("SELECT * FROM tl_calendar_events WHERE id=?")->limit(1)->execute($editID);
                 $AuthorizedUser = (bool) $this->checkUserEditRights($this->User, $editID, $currentEventObject);
 
                 if (!$AuthorizedUser) {
-                    $fatalError = 'Unauthorized User: You are not allowed to edit this event.';
+                    $fatalError = 'Unauthorized User: You are not allowed to edit this event.'; //TODO: lang
                 }
             }
         }
@@ -432,48 +432,48 @@ class ModuleEventEditor extends Events {
 		// use calendarfield if installed
 		if (in_array('calendarfield', $this->Config->getActiveModules())) 
 		{
-			$fields['startdate'] = array(
-				'name' => 'startdate',
+			$fields['startDate'] = array(
+				'name' => 'startDate',
 				'label' => $GLOBALS['TL_LANG']['MSC']['caledit_startdate'],
 				'inputType' => 'calendar',
 				'value' => $startDate,
 				'eval' => array('rgxp' => 'date', 'mandatory' => true)
 				);
 
-			$fields['enddate'] = array(
-				'name' => 'enddate',
+			$fields['endDate'] = array(
+				'name' => 'endDate',
 				'label' => $GLOBALS['TL_LANG']['MSC']['caledit_enddate'],
 				'inputType' => 'calendar',
 				'value' => $endDate,
 				'eval' => array('rgxp' => 'date', 'mandatory' => false, 'maxlength' => 128, 'decodeEntities' => true)
 				);
 		} else {
-			$fields['startdate'] = array(
-				'name' => 'startdate',
+			$fields['startDate'] = array(
+				'name' => 'startDate',
 				'label' => $GLOBALS['TL_LANG']['MSC']['caledit_startdate'],
 				'inputType' => 'text',
 				'value' => $startDate,
 				'eval' => array('rgxp' => 'date', 'mandatory' => true)
 				);
 
-			$fields['enddate'] = array(
-				'name' => 'enddate',
+			$fields['endDate'] = array(
+				'name' => 'endDate',
 				'label' => $GLOBALS['TL_LANG']['MSC']['caledit_enddate'],
 				'inputType' => 'text',
 				'value' => $endDate,
 				'eval' => array('rgxp' => 'date', 'mandatory' => false, 'maxlength' => 128, 'decodeEntities' => true)
 				);
 		}
-		$fields['starttime'] = array(
-			'name' => 'starttime',
+		$fields['startTime'] = array(
+			'name' => 'startTime',
 			'label' => $GLOBALS['TL_LANG']['MSC']['caledit_starttime'],
 			'inputType' => 'text',
 			'value' => $starttime,
 			'eval' => array('rgxp' => 'time', 'mandatory' => $mandStarttime, 'maxlength' => 128, 'decodeEntities' => true)
 			);
 
-		$fields['endtime'] = array(
-			'name' => 'endtime',
+		$fields['endTime'] = array(
+			'name' => 'endTime',
 			'label' => $GLOBALS['TL_LANG']['MSC']['caledit_endtime'],
 			'inputType' => 'text',
 			'value' => $endtime,
