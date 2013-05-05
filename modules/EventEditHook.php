@@ -18,7 +18,7 @@
  * Class EventEditor
  */
 /*
-class EventEditHook extends Frontend
+class EventEditHook extends \Frontend
 {
 
 	public function addFields($NewEventData, $fields, $currentEventObject, $editID) {
@@ -28,37 +28,37 @@ class EventEditHook extends Frontend
 		
 		// Get Calendar_Events - Data from current event
 		if ($editID) {
-			$result['NewEventData']['cep_location']     = $currentEventObject->cep_location;
-			$result['NewEventData']['cep_participants'] = $currentEventObject->cep_participants;
-			$result['NewEventData']['cep_contact']      = $currentEventObject->cep_contact;			
+			$result['NewEventData']['ce_location']     = $currentEventObject->ce_location;
+			$result['NewEventData']['ce_participants'] = $currentEventObject->ce_participants;
+			$result['NewEventData']['ce_contact']      = $currentEventObject->ce_contact;			
 		}
 		// overwrite it with current POST data
 		if ($this->Input->post('FORM_SUBMIT') == 'caledit_submit') {
-			$result['NewEventData']['cep_location']     = $this->Input->post('cep_location');
-			$result['NewEventData']['cep_participants'] = $this->Input->post('cep_participants');
-			$result['NewEventData']['cep_contact']      = $this->Input->post('cep_contact');
+			$result['NewEventData']['ce_location']     = $this->Input->post('ce_location');
+			$result['NewEventData']['ce_participants'] = $this->Input->post('ce_participants');
+			$result['NewEventData']['ce_contact']      = $this->Input->post('ce_contact');
 		}
 		
 		// create new fields		
-		$result['fields']['cep_location'] = array(
-				'name' => 'cep_location',
-				'label' => $GLOBALS['TL_LANG']['MSC']['cep_location'],
+		$result['fields']['ce_location'] = array(
+				'name' => 'ce_location',
+				'label' => $GLOBALS['TL_LANG']['MSC']['ce_location'],
 				'inputType' => 'text',
-				'value' => $result['NewEventData']['cep_location'],
+				'value' => $result['NewEventData']['ce_location'],
 				'eval' => array('maxlength' => 255)
 				);
-		$result['fields']['cep_participants'] = array(
-				'name' => 'cep_participants',
-				'label' => $GLOBALS['TL_LANG']['MSC']['cep_participants'],
+		$result['fields']['ce_participants'] = array(
+				'name' => 'ce_participants',
+				'label' => $GLOBALS['TL_LANG']['MSC']['ce_participants'],
 				'inputType' => 'text',
-				'value' => $result['NewEventData']['cep_participants'],
+				'value' => $result['NewEventData']['ce_participants'],
 				'eval' => array('maxlength' => 255)
 				);
-		$result['fields']['cep_contact'] = array(
-				'name' => 'cep_contact',
-				'label' => $GLOBALS['TL_LANG']['MSC']['cep_contact'],
+		$result['fields']['ce_contact'] = array(
+				'name' => 'ce_contact',
+				'label' => $GLOBALS['TL_LANG']['MSC']['ce_contact'],
 				'inputType' => 'text',
-				'value' => $result['NewEventData']['cep_contact'],
+				'value' => $result['NewEventData']['ce_contact'],
 				'eval' => array('maxlength' => 255)
 				);	
 					
@@ -67,16 +67,16 @@ class EventEditHook extends Frontend
 	
 	public function prepareData($eventData) {
 		$result = $eventData;
-		$addDet = "<p>Location: ".$eventData['cep_location']."</p>";
-		$addDet.= "<p>Participiants: ".$eventData['cep_participants']."</p>";
-		$addDet.= "<p>Contact: ".$eventData['cep_contact']."</p>";
+		$addDet = "<p>Location: ".$eventData['ce_location']."</p>";
+		$addDet.= "<p>Participiants: ".$eventData['ce_participants']."</p>";
+		$addDet.= "<p>Contact: ".$eventData['ce_contact']."</p>";
 		// Add location, participiants and contact to details
 		$result['details'] = $addDet.$result['details'];
 		// delete these fieldes from the data-array, as these columns does not exist in tl_calendar_events
 		// (they actually do, if you have installed the extension calendar_events_plus)
-		unset($result['cep_location']);
-		unset($result['cep_participants']);
-		unset($result['cep_contact']);
+		unset($result['ce_location']);
+		unset($result['ce_participants']);
+		unset($result['ce_contact']);
 		return $result;
 		
 	}
