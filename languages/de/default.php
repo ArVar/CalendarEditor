@@ -34,4 +34,6 @@ $GLOBALS['TL_LANG']['MSC']['caledit_publishedEvent'] = "veröffentlichter Termin
 $GLOBALS['TL_LANG']['MSC']['caledit_newEvent'] = "Neuer Termin";
 $GLOBALS['TL_LANG']['MSC']['caledit_currentActionHint'] = "Aktuell wird bearbeitet:";
 $GLOBALS['TL_LANG']['MSC']['caledit_eventData'] = "Termindaten";
-
+$GLOBALS['TL_LANG']['MSC']['caledit_NotRegisteredUser'] = 'Nur registrierte Nutzer dürfen Termine erstellen. Bitte melden Sie sich an.';
+$GLOBALS['TL_LANG']['MSC']['caledit_UnauthorizedUser'] = 'Unautorisierter Nutzer: Sie sind nicht berechtigt, Termine von Kalendern zu bearbeiten.';
+$GLOBALS['TL_LANG']['MSC']['caledit_UnauthorizedUserThis'] = 'Unautorisierter Nutzer: Sie sind nicht berechtigt, diesen Termin zu bearbeiten.';

@@ -43,3 +43,6 @@ $GLOBALS['TL_LANG']['MSC']['caledit_publishedEvent'] = 'published event';
 $GLOBALS['TL_LANG']['MSC']['caledit_newEvent'] = 'New event';
 $GLOBALS['TL_LANG']['MSC']['caledit_currentActionHint'] = 'Currently editing:';
 $GLOBALS['TL_LANG']['MSC']['caledit_eventData'] = 'Event data';
+$GLOBALS['TL_LANG']['MSC']['caledit_NotRegisteredUser'] = 'Only registered users are allowed to add events. Please log in.';
+$GLOBALS['TL_LANG']['MSC']['caledit_UnauthorizedUser'] = 'Unauthorized user: You are not allowed to edit events in any calender.';
+$GLOBALS['TL_LANG']['MSC']['caledit_UnauthorizedUserThis'] = 'Unauthorized User: You are not allowed to edit this event.';

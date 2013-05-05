@@ -295,17 +295,17 @@ class ModuleEventEditor extends Events {
         $this->import('FrontendUser', 'User');
 
         if (!FE_USER_LOGGED_IN) {
-            $fatalError = 'Not a registered user.'; //TODO: lang
+            $fatalError = $GLOBALS['TL_LANG']['MSC']['caledit_NotRegisteredUser'];
         } else {
             $AllowedCalendars = $this->getCalendars($this->User);			
             if (count($AllowedCalendars) == 0) {
-                $fatalError = 'Unauthorized user: You are not allowed to edit events in any calender.'; //TODO: lang
+                $fatalError = $GLOBALS['TL_LANG']['MSC']['caledit_UnauthorizedUser'];
             } else {
 				$currentEventObject = $this->Database->prepare("SELECT * FROM tl_calendar_events WHERE id=?")->limit(1)->execute($editID);
                 $AuthorizedUser = (bool) $this->checkUserEditRights($this->User, $editID, $currentEventObject);
 
                 if (!$AuthorizedUser) {
-                    $fatalError = 'Unauthorized User: You are not allowed to edit this event.'; //TODO: lang
+                    $fatalError = $GLOBALS['TL_LANG']['MSC']['caledit_UnauthorizedUserThis'];
                 }
             }
         }
