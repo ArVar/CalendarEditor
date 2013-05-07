@@ -19,7 +19,9 @@ Dieses Repository dient der Weiterentwicklung, Anpassung an zukünftige Contao V
 Installation
 ------------
 
-Die Erweiterung kann über ein laufendes Contao direkt installiert werden.
+Die Erweiterung kann über ein laufendes Contao direkt installiert werden. 
+Dazu muss man einfach den Modul-Ordner in das /system/modules/ Verzeichnis der Contao Installation kopieren
+und ein Datenbank-Update im Backend machen.
 
 
 Dokumentation und Support
