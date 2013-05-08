@@ -6,20 +6,30 @@
 <?php if ($this->CurrentEventLink): ?>
 <?php if ($this->CurrentPublished): ?>
 <p class="caledit_info">
-<a href="<?php echo $this->CurrentEventLink; ?>" title="<?php echo $this->CurrentTitle; ?>"> <?php echo $this->CurrentTitle; ?> </a>
+<span class="date"> <?php echo $this->CurrentDate; ?>: </span> <a href="<?php echo $this->CurrentEventLink; ?>" title="<?php echo $this->CurrentTitle; ?>"> <?php echo $this->CurrentTitle; ?> </a>
 <?php else:; ?>
 <span class="date"> <?php echo $this->CurrentDate; ?>: </span><span class="title"><?php echo $this->CurrentTitle; ?></span>
 <?php endif; ?>
+
+<span class= "caledit_publishinfo"> (<?php echo $this->CurrentPublishedInfo; ?>) </span>
+<?php if ($this->DeleteEventLink): ?>
+<span class="deletelink">
+<a href="<?php echo $this->DeleteEventLink; ?>" title="<?php echo $this->DeleteEventTitle; ?>"> <?php echo $this->DeleteEventTitle; ?> </a>
+</span>
 <?php endif; ?>
-<span="caledit_publishinfo"> (<?php echo $this->CurrentPublishedInfo; ?>) </span>
+
+<?php else: ?>
+<span class= "caledit_publishinfo"> (<?php echo $this->CurrentPublishedInfo; ?>) </span>
+<?php endif; ?>
 </p>
 
 <?php if (!$this->fields): ?>
+<h2>  <?php echo $this->EditHeadline ?></h2>
 <p class="error"><?php echo $this->FatalError; ?></p>
 <?php else: ?>
 <div class="event<?php echo $this->classList; ?>">
 <h2>  <?php echo $GLOBALS['TL_LANG']['MSC']['caledit_eventData']; ?></h2>
-<div class="form">
+<div class="formbody">
         <form action="<?php echo $this->action; ?>" method="post">
         <input type="hidden" name="FORM_SUBMIT" value="caledit_submit" /><?php echo $this->messages; ?>
 		<input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">

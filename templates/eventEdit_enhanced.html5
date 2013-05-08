@@ -34,7 +34,7 @@
 <div class="formbody">
         <form action="<?php echo $this->action; ?>" method="post">
         <input type="hidden" name="FORM_SUBMIT" value="caledit_submit" /><?php echo $this->messages; ?>
-        <input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+		<input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
 		<table cellpadding="2" cellspacing="2" border="0" >
 		<tbody>
 			
