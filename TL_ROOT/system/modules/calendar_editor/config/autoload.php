@@ -16,12 +16,13 @@
  */
 ClassLoader::addClasses(array
 (
-	'ModuleHiddenEventlist' => 'system/modules/calendar_editor/modules/ModuleHiddenEventlist.php',
+	// Modules
+	'EventEditHook'         => 'system/modules/calendar_editor/modules/EventEditHook.php',
 	'EventEditor'           => 'system/modules/calendar_editor/modules/EventEditor.php',
+	'ModuleCalenderEdit'    => 'system/modules/calendar_editor/modules/ModuleCalenderEdit.php',
 	'ModuleEventEditor'     => 'system/modules/calendar_editor/modules/ModuleEventEditor.php',
 	'ModuleEventReaderEdit' => 'system/modules/calendar_editor/modules/ModuleEventReaderEdit.php',
-	'ModuleCalenderEdit'    => 'system/modules/calendar_editor/modules/ModuleCalenderEdit.php',
-	'EventEditHook'    		=> 'system/modules/calendar_editor/modules/EventEditHook.php',
+	'ModuleHiddenEventlist' => 'system/modules/calendar_editor/modules/ModuleHiddenEventlist.php',
 ));
 
 
@@ -30,12 +31,12 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'cal_default_edit'       		=> 'system/modules/calendar_editor/templates',
-	'event_full_edit'        		=> 'system/modules/calendar_editor/templates',
-	'event_list_edit'        		=> 'system/modules/calendar_editor/templates',
-	'event_upcoming_edit'    		=> 'system/modules/calendar_editor/templates',
-	'event_upcoming_unpublished'    => 'system/modules/calendar_editor/templates',
-	'eventEdit_default'        		=> 'system/modules/calendar_editor/templates',
-	'eventEdit_enhanced'        	=> 'system/modules/calendar_editor/templates',
-	'mod_event_ReaderEditLink'		=> 'system/modules/calendar_editor/templates',
+	'cal_default_edit'           => 'system/modules/calendar_editor/templates',
+	'eventEdit_default'          => 'system/modules/calendar_editor/templates',
+	'eventEdit_enhanced'         => 'system/modules/calendar_editor/templates',
+	'event_full_edit'            => 'system/modules/calendar_editor/templates',
+	'event_list_edit'            => 'system/modules/calendar_editor/templates',
+	'event_upcoming_edit'        => 'system/modules/calendar_editor/templates',
+	'event_upcoming_unpublished' => 'system/modules/calendar_editor/templates',
+	'mod_event_ReaderEditLink'   => 'system/modules/calendar_editor/templates',
 ));
