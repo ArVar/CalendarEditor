@@ -27,5 +27,7 @@ und ein Datenbank-Update im Backend machen.
 Dokumentation und Support
 -------------------------
 
-Folgt...
+Anmerkung zur Verwendung vom EventEditHook: 
+Die Felder sollten als DCA tabellen vorhanden sein und die EventEditHook.php den Bedürfnissen entsprechend angepasst werden.
+Falls das custom/enhaced Tamplate verwendet wird, sollten dort die Felder entsprechend angepasst werden.
 
