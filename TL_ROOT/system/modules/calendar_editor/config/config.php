@@ -28,5 +28,5 @@ $GLOBALS['FE_MOD']['events']['EventHiddenList'] = 'ModuleHiddenEventlist';
  */
 
 $GLOBALS['TL_HOOKS']['getAllEvents'][] = array('EventEditor', 'allEventsHook');
-$GLOBALS['TL_HOOKS']['buildCalendarEditForm']['Edit'] = array('EventEditHook', 'addFields'); 
-$GLOBALS['TL_HOOKS']['prepareCalendarEditData']['Edit'] = array('EventEditHook', 'prepareData');
+$GLOBALS['TL_HOOKS']['buildCalendarEditForm']['Edit'][] = array('EventEditHook', 'addFields'); 
+$GLOBALS['TL_HOOKS']['prepareCalendarEditData']['Edit'][] = array('EventEditHook', 'prepareData');
