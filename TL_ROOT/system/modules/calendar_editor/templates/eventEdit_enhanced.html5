@@ -136,10 +136,6 @@
 				</tr>			
 			<?php endif; ?>
 			
-			
-			
-			
-			
 			<tr class="<?php echo $class; ?>">
 				<td class="label">&nbsp;</td>
 				<td class="value"><input type="submit" class="submit" value="<?php echo $this->submit; ?>" /></td>
