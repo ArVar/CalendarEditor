@@ -17,7 +17,7 @@
 /**
  * Class EventEditor
  */
-/*
+
 class EventEditHook extends \Frontend
 {
 
@@ -25,7 +25,8 @@ class EventEditHook extends \Frontend
 		$result = array();
 		$result['NewEventData'] = $NewEventData; 
 		$result['fields']       = $fields;
-		
+		//Add here custom logic
+		/*		
 		// Get Calendar_Events - Data from current event
 		if ($editID) {
 			$result['NewEventData']['ce_location']     = $currentEventObject->ce_location;
@@ -61,12 +62,14 @@ class EventEditHook extends \Frontend
 				'value' => $result['NewEventData']['ce_contact'],
 				'eval' => array('maxlength' => 255)
 				);	
-					
+		*/			
 		return $result;
 	}	
 	
 	public function prepareData($eventData) {
 		$result = $eventData;
+		//Add here custom logic
+		/*
 		$addDet = "<p>Location: ".$eventData['ce_location']."</p>";
 		$addDet.= "<p>Participiants: ".$eventData['ce_participants']."</p>";
 		$addDet.= "<p>Contact: ".$eventData['ce_contact']."</p>";
@@ -77,8 +80,7 @@ class EventEditHook extends \Frontend
 		unset($result['ce_location']);
 		unset($result['ce_participants']);
 		unset($result['ce_contact']);
+		*/
 		return $result;
-		
 	}
 }
-*/
