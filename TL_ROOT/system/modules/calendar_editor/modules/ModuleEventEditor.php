@@ -568,6 +568,19 @@ class ModuleEventEditor extends Events {
 				);
 			$fields['published']['options']['1'] = $GLOBALS['TL_LANG']['MSC']['caledit_published'];
 		}
+		
+		//HOOK: Add custom fields
+		if (isset($GLOBALS['TL_HOOKS']['buildCalendarEditForm']['Edit']) && is_array($GLOBALS['TL_HOOKS']['buildCalendarEditForm']['Edit']))
+		{
+			foreach ($GLOBALS['TL_HOOKS']['buildCalendarEditForm']['Edit'] as $callback)
+			{
+				$this->import($callback[0]);
+				$arrHookResult = $this->$callback[0]->$callback[1]($this->$NewEventData, $fields, $currentEventObject, $editID);
+				
+				$NewEventData = $arrHookResult['NewEventData'];
+				$fields = $arrHookResult['fields'];
+			}
+		}
 
 		$arrWidgets = array();
 		// Initialize widgets
