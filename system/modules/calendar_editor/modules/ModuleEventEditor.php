@@ -223,12 +223,12 @@ class ModuleEventEditor extends Events {
 				 'title' => $eventData['title'],
 				 'teaser' => $eventData['teaser'],
 				 'startDate' => $startDate,
-				 'cssClass' => $eventData['css'],
+				 'cssClass' => $eventData['cssClass'],
 				 'published' => $eventData['published'],
 				 'FE_User'   => $eventData['FE_User']
 				);			
 
-			// Dealing with empty enddates, Start/endtimes ...
+			// Dealing with empty enddates, start/endtimes ...
 			if (trim($eventData['endDate']) != '') {
 				// an enddate is given
 				$endDate = strtotime($eventData['endDate']);
@@ -258,7 +258,7 @@ class ModuleEventEditor extends Events {
 
              
 			if (trim($eventData['endTime']) == '') {
-				// if no endtime is given: set andtime = starttime
+				// if no endTime is given: set endTime = startTime
 				$endTime = strtotime($endDateStr.' '.$eventData['startTime']);
 				$arrEvent['endTime'] = $endTime;
 			}
@@ -321,7 +321,7 @@ class ModuleEventEditor extends Events {
 		// ok, the user is an authorized user
 		// 1. Get Data from post/get
 		$startDate = $newDate;
-		$postStart = \Input::post('startdate');
+		$postStart = \Input::post('startDate');
 		if (!empty($postStart)) {
 			$startDate = $postStart;
 		}
@@ -333,15 +333,15 @@ class ModuleEventEditor extends Events {
 			
 			$endDate = $currentEventObject->endDate;		
 			if ($currentEventObject->addTime){
-				$starttime = $currentEventObject->startTime;
-				$endtime = $currentEventObject->endTime;
+				$startTime = $currentEventObject->startTime;
+				$endTime = $currentEventObject->endTime;
 			} else {
-				$starttime = '';
-				$endtime = '';
+				$startTime = '';
+				$endTime = '';
 			}			
 			$title = $currentEventObject->title;
 			$teaser = $currentEventObject->teaser;
-			$css = $currentEventObject->cssClass;
+			$cssClass = $currentEventObject->cssClass;
 			$pid = $currentEventObject->pid;			
 			$published = $currentEventObject->published;	
 			$alias = $currentEventObject->alias;
@@ -391,13 +391,13 @@ class ModuleEventEditor extends Events {
 				
 		// after this: Overwrite it with the post data 
 		if (\Input::post('FORM_SUBMIT') == 'caledit_submit') {		
-			$startDate = \Input::post('startdate');
-			$endDate = \Input::post('enddate');
-			$starttime = \Input::post('starttime');
-			$endtime = \Input::post('endtime');
+			$startDate = \Input::post('startDate');
+			$endDate = \Input::post('endDate');
+			$startTime = \Input::post('startTime');
+			$endTime = \Input::post('endTime');
 			$title = \Input::post('title');
 			$teaser = \Input::post('teaser');
-			$css = \Input::post('css');
+			$cssClass = \Input::post('cssClass');
 			$pid = \Input::post('pid');
 			$published = \Input::post('published');
 						
@@ -425,8 +425,8 @@ class ModuleEventEditor extends Events {
 				
 		$mandfields = deserialize($this->caledit_mandatoryfields);
 		$mandTeaser = (is_array($mandfields) && array_intersect(array('teaser') , $mandfields));
-		$mandStarttime = (is_array($mandfields) && array_intersect(array('starttime'), $mandfields));
-		$mandCss = (is_array($mandfields) && array_intersect(array('css') , $mandfields));
+		$mandStarttime = (is_array($mandfields) && array_intersect(array('startTime'), $mandfields));
+		$mandCss = (is_array($mandfields) && array_intersect(array('cssClass') , $mandfields));
 		// fill template with fields ...
 		$fields = array();
 		// use calendarfield if installed
@@ -468,7 +468,7 @@ class ModuleEventEditor extends Events {
 			'name' => 'startTime',
 			'label' => $GLOBALS['TL_LANG']['MSC']['caledit_starttime'],
 			'inputType' => 'text',
-			'value' => $starttime,
+			'value' => $startTime,
 			'eval' => array('rgxp' => 'time', 'mandatory' => $mandStarttime, 'maxlength' => 128, 'decodeEntities' => true)
 			);
 
@@ -476,7 +476,7 @@ class ModuleEventEditor extends Events {
 			'name' => 'endTime',
 			'label' => $GLOBALS['TL_LANG']['MSC']['caledit_endtime'],
 			'inputType' => 'text',
-			'value' => $endtime,
+			'value' => $endTime,
 			'eval' => array('rgxp' => 'time', 'mandatory' => false, 'maxlength' => 128, 'decodeEntities' => true)
 			);
 
@@ -540,21 +540,21 @@ class ModuleEventEditor extends Events {
 				$ref[$cssv['1']] = $cssv['0'];
 			}
 
-			$fields['css'] = array(
-				'name' => 'css',
+			$fields['cssClass'] = array(
+				'name' => 'cssClass',
 				'label' => $cssLabel,
 				'inputType' => 'select',
 				'options' => $opt, 
-				'value' => $css,
+				'value' => $cssClass,
 				'reference' => $ref,
 				'eval' => array('mandatory' => $mandCss, 'includeBlankOption' => true, 'maxlength' => 128, 'decodeEntities' => true)
 				);
 		} else {
-			$fields['css'] = array(
-				'name' => 'css',
+			$fields['cssClass'] = array(
+				'name' => 'cssClass',
 				'label' => $cssLabel,
 				'inputType' => 'text',
-				'value' => $css,
+				'value' => $cssClass,
 				'eval' => array('mandatory' => $mandCss, 'maxlength' => 128, 'decodeEntities' => true)
 				);
 		}
@@ -609,11 +609,11 @@ class ModuleEventEditor extends Events {
 			$NewEventData = array(
 						'startDate' => $startDate,
 						'endDate'   => $endDate,
-						'startTime' => $starttime,
-						'endTime'   => $endtime,						
+						'startTime' => $startTime,
+						'endTime'   => $endTime,						
 						'title'     => $title,
 						'teaser'    => $teaser,
-						'css'       => $css,
+						'cssClass'  => $cssClass,
 						'pid'       => $pid,
 						'published' => $published,
 						'FE_User'   => $this->User->id,
@@ -654,12 +654,12 @@ class ModuleEventEditor extends Events {
         // {
         // $this->strTemplate = 'event_AccessDenied';
         // }
-        // variablen fï¿½r datuim, enddatum, startzeit, endzeit, titel, ... fï¿½llen, die ggf. spï¿½ter ans Template geleitet werden.
+        // Variablen für Datum, Enddatum, Startzeit, Endzeit, Titel, ... füllen, die ggf. später ans Template geleitet werden.
         
 
         /*
                  	ToDo:
-                         - Kalender checken, ob der user in einem der Kalender ï¿½berhaupt was darf
+                         - Kalender checken, ob der user in einem der Kalender überhaupt was darf
                          - Url parsen: ist da ein Add? Ein Edit?
                          - Wenn Edit: Funktion Edit aufrufen
                          - Wenn Add: Add aufrufen
