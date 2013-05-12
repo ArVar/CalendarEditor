@@ -437,7 +437,7 @@ class ModuleEventEditor extends Events {
 				'label' => $GLOBALS['TL_LANG']['MSC']['caledit_startdate'],
 				'inputType' => 'calendar',
 				'value' => $startDate,
-				'eval' => array('rgxp' => 'date', 'mandatory' => true)
+				'eval' => array('rgxp' => 'date', 'mandatory' => true, 'dateImage'=>true)
 				);
 
 			$fields['endDate'] = array(
@@ -445,7 +445,7 @@ class ModuleEventEditor extends Events {
 				'label' => $GLOBALS['TL_LANG']['MSC']['caledit_enddate'],
 				'inputType' => 'calendar',
 				'value' => $endDate,
-				'eval' => array('rgxp' => 'date', 'mandatory' => false, 'maxlength' => 128, 'decodeEntities' => true)
+				'eval' => array('rgxp' => 'date', 'mandatory' => false, 'maxlength' => 128, 'decodeEntities' => true, 'dateImage'=>true)
 				);
 		} else {
 			$fields['startDate'] = array(
@@ -570,9 +570,9 @@ class ModuleEventEditor extends Events {
 		}
 		
 		//HOOK: Add custom fields
-		if (isset($GLOBALS['TL_HOOKS']['buildCalendarEditForm']['Edit']) && is_array($GLOBALS['TL_HOOKS']['buildCalendarEditForm']['Edit']))
+		if (isset($GLOBALS['TL_HOOKS']['buildCalendarEditForm']) && is_array($GLOBALS['TL_HOOKS']['buildCalendarEditForm']))
 		{
-			foreach ($GLOBALS['TL_HOOKS']['buildCalendarEditForm']['Edit'] as $callback)
+			foreach ($GLOBALS['TL_HOOKS']['buildCalendarEditForm'] as $callback)
 			{
 				$this->import($callback[0]);
 				$arrHookResult = $this->$callback[0]->$callback[1]($this->$NewEventData, $fields, $currentEventObject, $editID);
